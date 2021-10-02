@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void LevelEndEvent();
+
 public class Objective : MonoBehaviour
 {
+    public static event LevelEndEvent OnLevelEnd;
+
     public static Objective instance { get; private set; }
 
     private void Awake()
@@ -29,6 +33,7 @@ public class Objective : MonoBehaviour
             GoodBoy.instance.PowerDown();
             Time.timeScale = 0;
             Debug.Log(string.Format("Completed: {0}", Time.timeSinceLevelLoad));
+            OnLevelEnd?.Invoke();
         }
     }
 }

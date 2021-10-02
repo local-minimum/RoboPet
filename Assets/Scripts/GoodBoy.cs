@@ -6,6 +6,20 @@ public class GoodBoy : MonoBehaviour
 {
     [SerializeField]
     private Transform _trackingPosition;
+    [SerializeField]
+    private Rigidbody body;
+    [SerializeField]
+    Vector3[] legAnchors;
+
+    public Vector3 GetLegAnchor(LegPosition position)
+    {
+        return legAnchors[(int)position];
+    }
+
+    public Rigidbody AnchorBody
+    {
+        get { return body; }        
+    }
 
     public Transform trackingPosition
     {

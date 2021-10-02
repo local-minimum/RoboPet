@@ -5964,7 +5964,7 @@ HingeJoint:
   m_ConnectedBody: {fileID: 853982784}
   m_Anchor: {x: 0, y: 0.3, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
+  m_AutoConfigureConnectedAnchor: 0
   m_ConnectedAnchor: {x: -0.6714285, y: 0.16750008, z: 0.38533276}
   m_UseSpring: 1
   m_Spring:
@@ -6003,6 +6003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activationKey: 115
   negativeActivationKey: 0
+  legPosition: 0
 --- !u!1 &1170598225
 GameObject:
   m_ObjectHideFlags: 0
@@ -6194,7 +6195,7 @@ HingeJoint:
   m_ConnectedBody: {fileID: 853982784}
   m_Anchor: {x: 0, y: 0.3, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
+  m_AutoConfigureConnectedAnchor: 0
   m_ConnectedAnchor: {x: 0.65857136, y: 0.16750008, z: 0.38533276}
   m_UseSpring: 1
   m_Spring:
@@ -6233,6 +6234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activationKey: 107
   negativeActivationKey: 0
+  legPosition: 1
 --- !u!1 &1199875895
 GameObject:
   m_ObjectHideFlags: 0
@@ -6426,6 +6428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activationKey: 106
   negativeActivationKey: 0
+  legPosition: 3
 --- !u!1 &1328228273
 GameObject:
   m_ObjectHideFlags: 0
@@ -7403,6 +7406,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trackingPosition: {fileID: 1017236016}
+  body: {fileID: 853982784}
+  legAnchors:
+  - {x: -0.67, y: 0.167, z: 0.385}
+  - {x: 0.67, y: 0.167, z: 0.385}
+  - {x: -0.67, y: 0.167, z: -0.407}
+  - {x: 0.67, y: 0.167, z: -0.407}
 --- !u!1 &2000520478
 GameObject:
   m_ObjectHideFlags: 0
@@ -7557,7 +7566,7 @@ HingeJoint:
   m_ConnectedBody: {fileID: 853982784}
   m_Anchor: {x: 0, y: 0.3, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
+  m_AutoConfigureConnectedAnchor: 0
   m_ConnectedAnchor: {x: -0.6714285, y: 0.16750008, z: -0.40733337}
   m_UseSpring: 1
   m_Spring:
@@ -7596,3 +7605,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activationKey: 97
   negativeActivationKey: 122
+  legPosition: 2

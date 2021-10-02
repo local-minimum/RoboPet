@@ -11,6 +11,8 @@ public class MotorLeg : LegController
     {
         joint = GetComponent<HingeJoint>();
         targetVelocity = joint.motor.targetVelocity;
+        joint.connectedBody = GoodBoy.instance.AnchorBody;
+        joint.connectedAnchor = GoodBoy.instance.GetLegAnchor(legPosition);
     }
 
     private void Update()
