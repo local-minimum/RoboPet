@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   legPosition: 0
-  anchorOffset: {x: 0, y: -0.3, z: 0}
-  canReverse: 0
+  anchorOffset: {x: 0.1, y: -0.3, z: 0}
+  canReverse: 1
   motorTargetForce: 500
   motorForce: 500

@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class GoodBoy : MonoBehaviour
 {
-    [SerializeField]
-    private Transform _trackingPosition;
+    Transform _trackingPosition;
 
     [SerializeField]
     private Rigidbody body;
 
     [SerializeField]
-    Vector3[] legAnchors;
+    string[] legs;
+    [SerializeField]
+    Transform[] legAnchors;
 
     [SerializeField]
-    string[] legs;
+    string head;
+    [SerializeField]
+    Transform headAnchor;
 
     [SerializeField]
     KeyCode[] activationKeys;
@@ -22,9 +25,10 @@ public class GoodBoy : MonoBehaviour
     [SerializeField]
     KeyCode reverseKey;
 
+
     public Vector3 GetLegAnchor(LegPosition position)
     {
-        return legAnchors[(int)position];
+        return legAnchors[(int)position].position;
     }
 
     public Rigidbody AnchorBody
@@ -65,28 +69,37 @@ public class GoodBoy : MonoBehaviour
         } else if (instance != this)
         {
             Destroy(gameObject);
+            return;
         }
-    }
-
-    private void Start()
-    {
         HasPower = true;
         for (int i=0; i<legs.Length; i++)
         {
-            Vector3 anchor = legAnchors[i];
+            Vector3 anchor = legAnchors[i].position;
             var leg = Instantiate(
                 Resources.Load<LegController>(string.Format("Legs/{0}", legs[i])),
                 body.transform.position,
                 Quaternion.identity
             );
             leg.gameObject.SetActive(false);
-            leg.transform.position = body.transform.TransformPoint(anchor) + leg.anchorOffset;
+            var xOffSign = i % 2 == 0 ? -1 : 1;
+            var offset = new Vector3(leg.anchorOffset.x * xOffSign, leg.anchorOffset.y, leg.anchorOffset.z);
+            leg.transform.position = anchor + offset;
             leg.transform.SetParent(transform, true);
             leg.SetKeys(activationKeys[i], reverseKey);
             leg.gameObject.SetActive(true);
             leg.legPosition = (LegPosition)i;
-
         }
+
+        var head = Instantiate(
+            Resources.Load<GoodBoyHead>(string.Format("Heads/{0}", this.head))
+        );
+        head.gameObject.SetActive(false);
+        head.transform.position = headAnchor.transform.position + head.transform.TransformPoint(head.AnchorOffset);
+        head.transform.SetParent(transform, true);
+        head.GetComponent<FixedJoint>().connectedBody = body;
+        _trackingPosition = head.transform;
+        head.gameObject.SetActive(true);
+            
     }
 
     private void OnDestroy()
