@@ -21,4 +21,5 @@ public static class Palette
     public static Color color3 = fromHex("#8C86AA");
     public static Color color4 = fromHex("#81559B");
     public static Color color5 = fromHex("#7E3F8F");
+    public static Color tansparent = new Color(0, 0, 0, 0);
 }
