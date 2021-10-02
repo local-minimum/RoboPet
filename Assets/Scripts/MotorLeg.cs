@@ -12,11 +12,15 @@ public class MotorLeg : LegController
         joint = GetComponent<HingeJoint>();
         targetVelocity = joint.motor.targetVelocity;
     }
+
     private void Update()
-    {
-        joint.useMotor = activeLeg || reverse;
-        var motor = joint.motor;
-        motor.targetVelocity = reverse ? -targetVelocity : targetVelocity;
-        joint.motor = motor;
+    {        
+        joint.useMotor = activeLeg;
+        if (joint.useMotor)
+        {
+            var motor = joint.motor;
+            motor.targetVelocity = reverse ? -targetVelocity : targetVelocity;
+            joint.motor = motor;
+        }
     }
 }

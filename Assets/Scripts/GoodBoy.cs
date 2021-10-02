@@ -43,8 +43,20 @@ public class GoodBoy : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        HasPower = true;
+    }
+
     private void OnDestroy()
     {
         if (instance == this) instance = null;
+    }
+
+    public bool HasPower { get; private set; }
+
+    public void PowerDown()
+    {
+        HasPower = false;
     }
 }

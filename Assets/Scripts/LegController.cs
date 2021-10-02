@@ -11,7 +11,9 @@ public abstract class LegController : MonoBehaviour
     {
         get
         {
-            return Input.GetKey(activationKey);
+            return GoodBoy.instance.HasPower && (
+                Input.GetKey(activationKey) || Input.GetKey(negativeActivationKey)
+            );
         }
     }
 
@@ -22,4 +24,5 @@ public abstract class LegController : MonoBehaviour
             return Input.GetKey(negativeActivationKey);
         }
     }
+    
 }

@@ -21,4 +21,14 @@ public class Objective : MonoBehaviour
     {
         if (instance == this) { instance = null; }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "GoodBoy")
+        {
+            GoodBoy.instance.PowerDown();
+            Time.timeScale = 0;
+            Debug.Log(string.Format("Completed: {0}", Time.timeSinceLevelLoad));
+        }
+    }
 }
