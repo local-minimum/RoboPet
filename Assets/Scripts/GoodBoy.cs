@@ -4,27 +4,43 @@ using UnityEngine;
 
 public class GoodBoy : MonoBehaviour
 {
+    static string DEFAULT_LEG_TYPE = "BlockMotor";
+    public static string LegTypeSetting(LegPosition legPosition)
+    {
+        return string.Format("Leg.Type.{0}", legPosition.ToString());
+    }
+
+    public static LegController InstantiateLeg(LegPosition legPosition)
+    {
+        return Instantiate(Resources.Load<LegController>(
+            string.Format(
+                "Legs/{0}",
+                PlayerPrefs.GetString(LegTypeSetting(legPosition), DEFAULT_LEG_TYPE)
+            )
+        ));
+    }
+
+    static string DEFAULT_HEAD_TYPE = "Sphere";
+    static string HEAD_TYPE_SETTING = "Head.Type";
+    public static GoodBoyHead InstantiateHead()
+    {
+        return Instantiate(Resources.Load<GoodBoyHead>(
+            string.Format(
+                "Heads/{0}",
+                PlayerPrefs.GetString(HEAD_TYPE_SETTING, DEFAULT_HEAD_TYPE)
+            )
+        ));
+    }
+
     Transform _trackingPosition;
 
     [SerializeField]
     private Rigidbody body;
 
     [SerializeField]
-    string[] legs;
-    [SerializeField]
     Transform[] legAnchors;
-
-    [SerializeField]
-    string head;
     [SerializeField]
     Transform headAnchor;
-
-    [SerializeField]
-    KeyCode[] activationKeys;
-
-    [SerializeField]
-    KeyCode reverseKey;
-
 
     public Vector3 GetLegAnchor(LegPosition position)
     {
@@ -72,27 +88,21 @@ public class GoodBoy : MonoBehaviour
             return;
         }
         HasPower = true;
-        for (int i=0; i<legs.Length; i++)
+        for (int i=0; i<4; i++)
         {
             Vector3 anchor = legAnchors[i].position;
-            var leg = Instantiate(
-                Resources.Load<LegController>(string.Format("Legs/{0}", legs[i])),
-                body.transform.position,
-                Quaternion.identity
-            );
+            var legPosition = (LegPosition)i;
+            var leg = InstantiateLeg(legPosition);
             leg.gameObject.SetActive(false);
             var xOffSign = i % 2 == 0 ? -1 : 1;
             var offset = new Vector3(leg.anchorOffset.x * xOffSign, leg.anchorOffset.y, leg.anchorOffset.z);
             leg.transform.position = anchor + offset;
-            leg.transform.SetParent(transform, true);
-            leg.SetKeys(activationKeys[i], reverseKey);
+            leg.transform.SetParent(transform, true);            
             leg.gameObject.SetActive(true);
-            leg.legPosition = (LegPosition)i;
+            leg.legPosition = legPosition;
         }
 
-        var head = Instantiate(
-            Resources.Load<GoodBoyHead>(string.Format("Heads/{0}", this.head))
-        );
+        var head = InstantiateHead();
         head.gameObject.SetActive(false);
         head.transform.position = headAnchor.transform.position + head.transform.TransformPoint(head.AnchorOffset);
         head.transform.SetParent(transform, true);

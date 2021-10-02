@@ -24,6 +24,9 @@ public class UINoiser : MonoBehaviour
         sprite.name = "Rendered Noise Img";
         img = GetComponent<Image>();
         img.sprite = sprite;
+        var color = Color.white;
+        color.a = defaultAlpha;
+        img.color = color;
         StartCoroutine(Noiser());
     }
 
@@ -82,8 +85,11 @@ public class UINoiser : MonoBehaviour
         CameraDirector.OnNewCamera -= CameraDirector_OnNewCamera;
     }
 
-    private void CameraDirector_OnNewCamera(SurvalianceCamera camera)
+    private void CameraDirector_OnNewCamera(SurvalianceCamera camera, bool firstCamera)
     {
-        StartCoroutine(CameraSwap());
+        if (!firstCamera)
+        {
+            StartCoroutine(CameraSwap());
+        }
     }
 }

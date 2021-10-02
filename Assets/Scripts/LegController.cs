@@ -4,10 +4,10 @@ using UnityEngine;
 
 public enum LegPosition
 {
-    ForwardRight,
     ForwardLeft,
-    RearRight,
+    ForwardRight,
     RearLeft,
+    RearRight,
 }
 
 public abstract class LegController : MonoBehaviour
@@ -27,7 +27,7 @@ public abstract class LegController : MonoBehaviour
     {
         get
         {            
-            return GoodBoy.instance.HasPower && Input.GetKey(activationKey);
+            return GoodBoy.instance.HasPower && GoodBoyInput.IsActive(legPosition);
         }
     }
 
@@ -35,7 +35,7 @@ public abstract class LegController : MonoBehaviour
     {
         get
         {
-            return Input.GetKey(reverseKey);
+            return GoodBoyInput.InReverse;
         }
     }
     

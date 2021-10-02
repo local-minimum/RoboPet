@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public delegate void NewCameraEvent(SurvalianceCamera camera);
+public delegate void NewCameraEvent(SurvalianceCamera camera, bool firstCamera);
 
 public class CameraDirector : MonoBehaviour
 {
@@ -44,11 +44,12 @@ public class CameraDirector : MonoBehaviour
         var nextCamera = SurvalianceCamera.HighestPriorityCamera;
         if (nextCamera != currentCamera && Time.timeSinceLevelLoad - switchTime > minCameraTime)
         {
+            var firstCamera = currentCamera == null;
             currentCamera?.gameObject.SetActive(false);
             currentCamera = nextCamera;
             currentCamera.gameObject.SetActive(true);
             switchTime = Time.timeSinceLevelLoad;
-            OnNewCamera?.Invoke(currentCamera);
+            OnNewCamera?.Invoke(currentCamera, firstCamera);
         }
     }
 }

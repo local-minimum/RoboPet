@@ -164,5 +164,5 @@ MonoBehaviour:
   legPosition: 0
   anchorOffset: {x: 0.1, y: -0.5, z: 0}
   canReverse: 0
-  motorTargetForce: 400
-  motorForce: 500
+  motorTargetForce: 300
+  motorForce: 100

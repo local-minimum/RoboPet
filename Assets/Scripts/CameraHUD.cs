@@ -32,7 +32,7 @@ public class CameraHUD : MonoBehaviour
         SetRuntimeInfo(0f);
     }
 
-    private void CameraDirector_OnNewCamera(SurvalianceCamera camera)
+    private void CameraDirector_OnNewCamera(SurvalianceCamera camera, bool firstCamera)
     {
         var info = camera.info;
         cameraInfo.text = string.Format("{0}\n{1}", info[0], info[1]);
