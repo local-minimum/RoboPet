@@ -16,6 +16,12 @@ public class GoodBoy : MonoBehaviour
     [SerializeField]
     string[] legs;
 
+    [SerializeField]
+    KeyCode[] activationKeys;
+
+    [SerializeField]
+    KeyCode reverseKey;
+
     public Vector3 GetLegAnchor(LegPosition position)
     {
         return legAnchors[(int)position];
@@ -65,6 +71,22 @@ public class GoodBoy : MonoBehaviour
     private void Start()
     {
         HasPower = true;
+        for (int i=0; i<legs.Length; i++)
+        {
+            Vector3 anchor = legAnchors[i];
+            var leg = Instantiate(
+                Resources.Load<LegController>(string.Format("Legs/{0}", legs[i])),
+                body.transform.position,
+                Quaternion.identity
+            );
+            leg.gameObject.SetActive(false);
+            leg.transform.position = body.transform.TransformPoint(anchor) + leg.anchorOffset;
+            leg.transform.SetParent(transform, true);
+            leg.SetKeys(activationKeys[i], reverseKey);
+            leg.gameObject.SetActive(true);
+            leg.legPosition = (LegPosition)i;
+
+        }
     }
 
     private void OnDestroy()

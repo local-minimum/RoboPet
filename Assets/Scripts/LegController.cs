@@ -12,17 +12,22 @@ public enum LegPosition
 
 public abstract class LegController : MonoBehaviour
 {
-    public KeyCode activationKey;
-    public KeyCode negativeActivationKey;
     public LegPosition legPosition;
+    protected KeyCode activationKey;
+    private KeyCode reverseKey;
+    public Vector3 anchorOffset;
+
+    public void SetKeys(KeyCode activation, KeyCode reverse)
+    {
+        activationKey = activation;
+        reverseKey = reverse;
+    }
 
     protected bool activeLeg
     {
         get
-        {
-            return GoodBoy.instance.HasPower && (
-                Input.GetKey(activationKey) || Input.GetKey(negativeActivationKey)
-            );
+        {            
+            return GoodBoy.instance.HasPower && Input.GetKey(activationKey);
         }
     }
 
@@ -30,7 +35,7 @@ public abstract class LegController : MonoBehaviour
     {
         get
         {
-            return Input.GetKey(negativeActivationKey);
+            return Input.GetKey(reverseKey);
         }
     }
     

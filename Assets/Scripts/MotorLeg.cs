@@ -10,6 +10,7 @@ public class MotorLeg : LegController
     private void Start()
     {
         joint = GetComponent<HingeJoint>();
+        joint.enableCollision = false;
         targetVelocity = joint.motor.targetVelocity;
         joint.connectedBody = GoodBoy.instance.AnchorBody;
         joint.connectedAnchor = GoodBoy.instance.GetLegAnchor(legPosition);
@@ -19,7 +20,7 @@ public class MotorLeg : LegController
     {        
         joint.useMotor = activeLeg;
         if (joint.useMotor)
-        {
+        {            
             var motor = joint.motor;
             motor.targetVelocity = reverse ? -targetVelocity : targetVelocity;
             joint.motor = motor;
