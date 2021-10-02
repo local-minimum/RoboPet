@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class MotorLeg : LegController
 {
-    float targetVelocity;
+    [SerializeField]
+    bool canReverse;
+
+    [SerializeField]
+    float motorTargetForce = 400;
+
+    [SerializeField]
+    float motorForce = 500;
+    
     HingeJoint joint;
 
     private void Start()
     {
         joint = GetComponent<HingeJoint>();
         joint.enableCollision = false;
-        targetVelocity = joint.motor.targetVelocity;
+        var motor = joint.motor;
+        motor.targetVelocity = motorTargetForce;
+        motor.force = motorForce;
+        joint.motor = motor;
         joint.connectedBody = GoodBoy.instance.AnchorBody;
         joint.connectedAnchor = GoodBoy.instance.GetLegAnchor(legPosition);
     }
@@ -22,7 +33,7 @@ public class MotorLeg : LegController
         if (joint.useMotor)
         {            
             var motor = joint.motor;
-            motor.targetVelocity = reverse ? -targetVelocity : targetVelocity;
+            motor.targetVelocity = reverse && canReverse ? -motorTargetForce : motorTargetForce;
             joint.motor = motor;
         }
     }

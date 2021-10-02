@@ -6918,11 +6918,11 @@ MonoBehaviour:
   - {x: -0.67, y: 0.167, z: -0.407}
   - {x: 0.67, y: 0.167, z: -0.407}
   legs:
+  - BlockMotorTall
   - BlockMotor
   - BlockMotor
   - BlockMotor
-  - BlockMotor
-  activationKeys: 6b000000730000006a00000061000000
+  activationKeys: 730000006a000000610000006b000000
   reverseKey: 32
 --- !u!1 &2000520478
 GameObject:
