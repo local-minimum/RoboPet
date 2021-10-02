@@ -5,7 +5,7 @@ using UnityEngine;
 public class GoodBoySpawner : MonoBehaviour
 {
     static string DEFAULT_BODY_TYPE = "Blocky";
-    static string BODY_TYPE_SETTING = "Body.Type";
+    public static string BODY_TYPE_SETTING = "Body.Type";
     
     private GoodBoy InstantiateBody()
     {

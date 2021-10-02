@@ -16,11 +16,13 @@ public class UINoiser : MonoBehaviour
     float defaultAlpha = 0.5f;
     [SerializeField]
     float swappingAlpha = 0.7f;
+    [SerializeField]
+    int noiseScale = 2;
 
     void Start()
     {
-        tex = new Texture2D(Screen.width, Screen.height);
-        sprite = Sprite.Create(tex, new Rect(0, 0, Screen.width, Screen.height), Vector2.one * 0.5f);
+        tex = new Texture2D(Screen.width / noiseScale, Screen.height / noiseScale);
+        sprite = Sprite.Create(tex, new Rect(0, 0, Screen.width / noiseScale, Screen.height / noiseScale), Vector2.one * 0.5f);
         sprite.name = "Rendered Noise Img";
         img = GetComponent<Image>();
         img.sprite = sprite;
