@@ -17,6 +17,21 @@ public class GoodBoy : MonoBehaviour
 
     public static GoodBoy instance { get; private set; }
 
+    public static float distanceToObjective
+    {
+        get
+        {
+            var offset = Objective.instance.transform.position - instance.trackingPosition.position;
+            return offset.magnitude;
+        }
+    }
+
+
+    public static float GetSqDistanceTo(Transform other)
+    {
+        return (other.position - instance.trackingPosition.position).sqrMagnitude;
+    }
+
     private void Awake()
     {
         if (instance == null)

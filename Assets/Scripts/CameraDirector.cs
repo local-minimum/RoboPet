@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void NewCameraEvent(SurvalianceCamera camera);
+
 public class CameraDirector : MonoBehaviour
-{ 
+{
+    public static event NewCameraEvent OnNewCamera;
     public static CameraDirector instance { get; private set; }
 
-    SurvalianceCamera fallbackCamera;
     SurvalianceCamera currentCamera;
-    SurvalianceCamera nextCamera;
     float switchTime;
 
     [SerializeField]
@@ -25,6 +26,11 @@ public class CameraDirector : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        switchTime = -minCameraTime * 2;
+    }
+
     private void OnDestroy()
     {
         if (instance == this)
@@ -35,38 +41,14 @@ public class CameraDirector : MonoBehaviour
 
     private void Update()
     {
+        var nextCamera = SurvalianceCamera.HighestPriorityCamera;
         if (nextCamera != currentCamera && Time.timeSinceLevelLoad - switchTime > minCameraTime)
         {
-            currentCamera.gameObject.SetActive(false);
+            currentCamera?.gameObject.SetActive(false);
             currentCamera = nextCamera;
             currentCamera.gameObject.SetActive(true);
             switchTime = Time.timeSinceLevelLoad;
-        }
-    }
-
-    public void ActivateCamera(SurvalianceCamera camera)
-    {
-        if (currentCamera == null)
-        {
-            fallbackCamera = camera;
-            currentCamera = camera;
-            nextCamera = camera;
-            switchTime = Time.timeSinceLevelLoad;
-            camera.gameObject.SetActive(true);
-        } else
-        {
-            nextCamera = camera;
-        }
-    }
-
-    public void DeactivateCamera(SurvalianceCamera camera)
-    {
-        if (currentCamera == camera)
-        {
-            nextCamera = fallbackCamera;
-        } else if (nextCamera == camera)
-        {
-            nextCamera = currentCamera;
+            OnNewCamera?.Invoke(currentCamera);
         }
     }
 }

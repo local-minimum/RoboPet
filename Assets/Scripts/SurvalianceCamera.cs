@@ -1,30 +1,66 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public enum CameraMode { Static, Tracking, Sweaping };
 
 public class SurvalianceCamera : MonoBehaviour
 {
+    static SurvalianceCamera fallbackCamera;
+    static List<SurvalianceCamera> cameras = new List<SurvalianceCamera>();
+
+    public static SurvalianceCamera HighestPriorityCamera
+    {
+        get
+        {
+            var best = cameras
+                .Where(cameras => cameras.Priority > 0)
+                .OrderBy(camera => camera.Priority)
+                .LastOrDefault();
+            return best != null ? best : fallbackCamera;
+        }
+    }
+
     public CameraMode cameraMode = CameraMode.Static;
 
     private Quaternion startRotation;
-    public bool claimMainCamera;   
-    public Transform sweapingEdgeStart;
-    public Transform sweapingEdgeEnd;
-    public float sweapDuration = 4f;
+    [SerializeField]
+    private bool claimMainCamera;
+    [SerializeField]
+    private Transform sweapingEdgeStart;
+    [SerializeField]
+    private Transform sweapingEdgeEnd;
+    [SerializeField]
+    private float sweapDuration = 4f;
+    [SerializeField]
+    private string cameraName;
+
+    public string[] info
+    {
+        get
+        {
+            return new string[2]
+            {
+                cameraName,
+                cameraMode.ToString(),
+            };
+        }
+    }
 
     private void Start()
     {
         startRotation = transform.rotation;
         if (claimMainCamera)
         {
-            CameraDirector.instance.ActivateCamera(this);
+            fallbackCamera = this;            
         } else
         {
             gameObject.SetActive(false);
         }
+        cameras.Add(this);
     }
+
     private void Update()
     {
        switch (cameraMode)
@@ -49,20 +85,23 @@ public class SurvalianceCamera : MonoBehaviour
     public void RequestAcitvate(Collider trigger)
     {
         activatedTriggers.Add(trigger);
-        CameraDirector.instance.ActivateCamera(this);
-    }
-
-    public void RequestActivate()
-    {
-        CameraDirector.instance.ActivateCamera(this);
     }
 
     public void RequestDeactivate(Collider trigger)
     {
         activatedTriggers.Remove(trigger);
-        if (activatedTriggers.Count == 0)
+    }
+
+    public float Priority
+    {
+        get
         {
-            CameraDirector.instance.DeactivateCamera(this);
+            return activatedTriggers.Count > 0 ? GoodBoy.GetSqDistanceTo(transform) : 0;
         }
+    }
+
+    private void OnDestroy()
+    {
+        if (fallbackCamera == this) { fallbackCamera = null; }
     }
 }
