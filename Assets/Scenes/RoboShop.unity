@@ -3505,7 +3505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1729241345
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3876,7 +3876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decription: Flexible forward walking leg
-  limb: BlockMotor
+  limb: LegMotor
 --- !u!114 &1866337712
 MonoBehaviour:
   m_ObjectHideFlags: 0

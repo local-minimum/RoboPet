@@ -455,6 +455,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 953914682548894272, guid: 18bf6802531d3804981d5a4e06182b30, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 953914682639062793, guid: 18bf6802531d3804981d5a4e06182b30, type: 3}
       propertyPath: m_Name
       value: CameraOverlayCanvas
