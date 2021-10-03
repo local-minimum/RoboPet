@@ -1584,7 +1584,7 @@ GameObject:
   - component: {fileID: 920315656}
   - component: {fileID: 920315655}
   m_Layer: 5
-  m_Name: BtnPaddle
+  m_Name: BtnTwoSided
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1668,7 +1668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decription: Slick Paddle
-  limb: BlockMotor
+  limb: TwoSidedMotor
   startStock: 3
 --- !u!114 &920315657
 MonoBehaviour:
@@ -1955,7 +1955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decription: Elite Carbon Frame Wheel
-  limb: BlockMotor
+  limb: WheelMotor
   startStock: 1
 --- !u!114 &949438717
 MonoBehaviour:

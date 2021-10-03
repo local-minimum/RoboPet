@@ -36,8 +36,7 @@ public class PogoLeg : LegController
                 wasActive = true;
             }
             t += Time.deltaTime;
-            if (t > cylceLength) { t = 0; }
-            piston.localPosition = baseOffset * positioning.Evaluate(t);
+            piston.localPosition = baseOffset * positioning.Evaluate(Mathf.Min(t, cylceLength));
 
         } else if (wasActive)
         {

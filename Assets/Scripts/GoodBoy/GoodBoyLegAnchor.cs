@@ -46,7 +46,7 @@ public class GoodBoyLegAnchor : GoodBoyAnchor
         var leg = InstantiateLeg(legPosition);
         leg.gameObject.SetActive(false);
         leg.transform.rotation = transform.parent.rotation;
-        var offset = new Vector3(leg.anchorOffset.x * xOffSign, leg.anchorOffset.y, leg.anchorOffset.z);
+        var offset = leg.transform.rotation * new Vector3(leg.anchorOffset.x * xOffSign, leg.anchorOffset.y, leg.anchorOffset.z);
         leg.transform.position = transform.position + offset;
         leg.transform.SetParent(transform.parent.parent, true);
         leg.ConfigureJoint(transform.parent.GetComponent<Rigidbody>(), transform.position);

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1771095094056472386}
   m_Layer: 10
   m_Name: PogoMotor
-  m_TagString: Untagged
+  m_TagString: GoodBoy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771095094056472384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.432, y: 0, z: 0.485}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1591477892780312328}
@@ -84,35 +84,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -1.7156813
-      outSlope: -1.7156813
+      inSlope: -0.37136078
+      outSlope: -0.37136078
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.33584577
-      value: 0.42379567
-      inSlope: 0.023038462
-      outSlope: 0.023038462
-      tangentMode: 1
-      weightedMode: 0
-      inWeight: 0.50186265
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.37189084
-      value: 1.5227545
-      inSlope: 0.1842269
-      outSlope: -0.06644756
-      tangentMode: 1
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.03388985
-    - serializedVersion: 3
       time: 0.8
-      value: 1
-      inSlope: -1.2210777
-      outSlope: -1.2210777
+      value: 0.7029114
+      inSlope: -0.37136078
+      outSlope: -0.37136078
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -133,10 +115,10 @@ GameObject:
   - component: {fileID: 1771095094785174455}
   - component: {fileID: 1771095094785174450}
   - component: {fileID: 1771095094785174449}
-  - component: {fileID: 1771095094785174448}
+  - component: {fileID: 1482081228337099374}
   m_Layer: 10
   m_Name: Housing
-  m_TagString: Untagged
+  m_TagString: GoodBoy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,8 +131,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771095094785174454}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 0, y: -0.353, z: -0.028}
+  m_LocalScale: {x: 0.3, y: 0.4, z: 0.3}
   m_Children: []
   m_Father: {fileID: 1591477892780312328}
   m_RootOrder: 0
@@ -162,7 +144,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771095094785174454}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 8207437642976273326, guid: c0cc9b0bf3741d24dbceea204bc5089f, type: 3}
 --- !u!23 &1771095094785174449
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -204,8 +186,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1771095094785174448
-CapsuleCollider:
+--- !u!64 &1482081228337099374
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -214,10 +196,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8207437642976273326, guid: c0cc9b0bf3741d24dbceea204bc5089f, type: 3}
 --- !u!1 &1771095094963490262
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,10 +211,10 @@ GameObject:
   - component: {fileID: 1771095094963490263}
   - component: {fileID: 1771095094963490258}
   - component: {fileID: 1771095094963490257}
-  - component: {fileID: 1771095094963490256}
+  - component: {fileID: 7321707031844788217}
   m_Layer: 10
   m_Name: Piston
-  m_TagString: Untagged
+  m_TagString: GoodBoy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -245,8 +227,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771095094963490262}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.295, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.3, z: 0.1}
+  m_LocalPosition: {x: 0, y: -0.285, z: -0.028}
+  m_LocalScale: {x: 0.3, y: 0.4, z: 0.3}
   m_Children: []
   m_Father: {fileID: 1591477892780312328}
   m_RootOrder: 1
@@ -258,7 +240,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771095094963490262}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 8281756918473099310, guid: c0cc9b0bf3741d24dbceea204bc5089f, type: 3}
 --- !u!23 &1771095094963490257
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -300,8 +282,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1771095094963490256
-CapsuleCollider:
+--- !u!64 &7321707031844788217
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -310,10 +292,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8281756918473099310, guid: c0cc9b0bf3741d24dbceea204bc5089f, type: 3}
 --- !u!1 &4390437147846017575
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +307,7 @@ GameObject:
   - component: {fileID: 1591477892780312328}
   m_Layer: 10
   m_Name: Group
-  m_TagString: Untagged
+  m_TagString: GoodBoy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
