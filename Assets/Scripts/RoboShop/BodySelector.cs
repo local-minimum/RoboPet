@@ -9,13 +9,15 @@ public class BodyOption
     public string BodyType;
     public string Description;
     public Transform ViewPosition;
-
+    public Transform Body;
 }
 
-public delegate void SelectBodyTypeEvent(string bodyType);
+public delegate void SelectBodyTypeEvent(string bodyType, Transform bodyTransform);
 
 public class BodySelector : MonoBehaviour
 {
+    public static BodySelector instance { get; private set; }
+    
     public static event SelectBodyTypeEvent OnSelectBodyType;
 
     [SerializeField]
@@ -30,6 +32,22 @@ public class BodySelector : MonoBehaviour
     public BodyOption[] options;
     public int currentIndex;
     [SerializeField] Camera cam;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        } else if (instance != this)
+        {
+            Destroy(this);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (instance == this) { instance = null; }
+    }
 
     public void SelectNext()
     {
@@ -46,7 +64,7 @@ public class BodySelector : MonoBehaviour
         var bodyType = options[currentIndex].BodyType;
         PlayerPrefs.SetString(GoodBoySpawner.BODY_TYPE_SETTING, bodyType);
         enabled = false;
-        OnSelectBodyType?.Invoke(bodyType);
+        OnSelectBodyType?.Invoke(bodyType, options[currentIndex].Body);
     }
 
     private void OnEnable()

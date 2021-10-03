@@ -12,16 +12,10 @@ public enum LegPosition
 
 public abstract class LegController : MonoBehaviour
 {
-    public LegPosition legPosition;
-    protected KeyCode activationKey;
-    private KeyCode reverseKey;
+    public LegPosition legPosition;  
     public Vector3 anchorOffset;
 
-    public void SetKeys(KeyCode activation, KeyCode reverse)
-    {
-        activationKey = activation;
-        reverseKey = reverse;
-    }
+    public abstract void ConfigureJoint(Rigidbody connectedBody, Vector3 connectedPosition);
 
     protected bool activeLeg
     {

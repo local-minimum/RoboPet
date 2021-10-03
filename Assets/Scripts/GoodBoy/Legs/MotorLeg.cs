@@ -15,7 +15,7 @@ public class MotorLeg : LegController
     
     HingeJoint joint;
 
-    private void Start()
+    private void Awake()
     {
         joint = GetComponent<HingeJoint>();
         joint.enableCollision = false;
@@ -23,10 +23,14 @@ public class MotorLeg : LegController
         motor.targetVelocity = motorTargetForce;
         motor.force = motorForce;
         joint.motor = motor;
-        joint.connectedBody = GoodBoy.instance.AnchorBody;
-        joint.connectedAnchor = GoodBoy.instance.GetLegAnchor(legPosition);
     }
 
+    public override void ConfigureJoint(Rigidbody connectedBody, Vector3 connectedPosition)
+    {
+        joint.connectedBody = connectedBody;
+        joint.connectedAnchor = connectedPosition;
+    }
+    
     private void Update()
     {        
         joint.useMotor = activeLeg;

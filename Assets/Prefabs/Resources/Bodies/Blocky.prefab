@@ -126,6 +126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7132112273335368966}
+  - component: {fileID: 879584783378587639}
   m_Layer: 8
   m_Name: LegForwardRight
   m_TagString: Untagged
@@ -147,6 +148,19 @@ Transform:
   m_Father: {fileID: 7132112272705973368}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &879584783378587639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7132112273335368967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bcee41c948b99439184920dc7cbc77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  legPosition: 1
 --- !u!1 &7132112273619815291
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7132112273619815290}
+  - component: {fileID: 787770721940565697}
   m_Layer: 8
   m_Name: LegRearRight
   m_TagString: Untagged
@@ -177,6 +192,19 @@ Transform:
   m_Father: {fileID: 7132112272705973368}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &787770721940565697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7132112273619815291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bcee41c948b99439184920dc7cbc77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  legPosition: 3
 --- !u!1 &7132112273664501277
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,6 +214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7132112273664501276}
+  - component: {fileID: 1045809797507026666}
   m_Layer: 8
   m_Name: LegForwardLeft
   m_TagString: Untagged
@@ -207,6 +236,19 @@ Transform:
   m_Father: {fileID: 7132112272705973368}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1045809797507026666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7132112273664501277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bcee41c948b99439184920dc7cbc77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  legPosition: 0
 --- !u!1 &7132112273884467616
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,11 +295,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 7132112272705973255}
   legAnchors:
-  - {fileID: 7132112273664501276}
-  - {fileID: 7132112273335368966}
-  - {fileID: 7132112274435041806}
-  - {fileID: 7132112273619815290}
-  headAnchor: {fileID: 7132112274143510433}
+  - {fileID: 1045809797507026666}
+  - {fileID: 879584783378587639}
+  - {fileID: 6213579189690086825}
+  - {fileID: 787770721940565697}
+  headAnchor: {fileID: 8430222531931318286}
 --- !u!1 &7132112274143510434
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +309,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7132112274143510433}
+  - component: {fileID: 8430222531931318286}
   m_Layer: 8
   m_Name: HeadAnchor
   m_TagString: Untagged
@@ -288,6 +331,18 @@ Transform:
   m_Father: {fileID: 7132112272705973368}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8430222531931318286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7132112274143510434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 176ea703dd9c56e4092ffa78915d3922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7132112274435041807
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,6 +352,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7132112274435041806}
+  - component: {fileID: 6213579189690086825}
   m_Layer: 8
   m_Name: LegRearLeft
   m_TagString: Untagged
@@ -318,3 +374,16 @@ Transform:
   m_Father: {fileID: 7132112272705973368}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6213579189690086825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7132112274435041807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bcee41c948b99439184920dc7cbc77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  legPosition: 2
