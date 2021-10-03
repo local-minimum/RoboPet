@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoodBoyHeadAnchor : MonoBehaviour
+public class GoodBoyHeadAnchor : GoodBoyAnchor
 {
     static string DEFAULT_HEAD_TYPE = "Sphere";
     static string HEAD_TYPE_SETTING = "Head.Type";
@@ -15,6 +15,9 @@ public class GoodBoyHeadAnchor : MonoBehaviour
             )
         ));
     }
+
+    public override string SettingKey => HEAD_TYPE_SETTING;
+    public override BodyPart BodyPart => BodyPart.Head;
 
     public GoodBoyHead SpawnHead(Rigidbody body)
     {

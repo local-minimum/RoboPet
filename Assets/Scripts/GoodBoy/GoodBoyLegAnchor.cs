@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoodBoyLegAnchor : MonoBehaviour
+public class GoodBoyLegAnchor : GoodBoyAnchor
 {
     static string DEFAULT_LEG_TYPE = "BlockMotor";
     public static string LegTypeSetting(LegPosition legPosition)
@@ -23,6 +23,15 @@ public class GoodBoyLegAnchor : MonoBehaviour
     [SerializeField]
     LegPosition legPosition;
 
+    public override string SettingKey
+    {
+        get
+        {
+            return LegTypeSetting(legPosition);
+        }
+    }
+    public override BodyPart BodyPart => BodyPart.Leg;
+
     float xOffSign
     {
         get
@@ -31,6 +40,7 @@ public class GoodBoyLegAnchor : MonoBehaviour
             return left ? -1 : 1;
         }
     }
+
     public LegController SpawnLeg()
     {        
         var leg = InstantiateLeg(legPosition);

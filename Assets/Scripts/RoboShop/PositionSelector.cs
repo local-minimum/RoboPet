@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void LimbSelectEvent(PositionSelector positionSelector);
+
 public class PositionSelector : MonoBehaviour
 {
+    public static bool disabled;
+
+    public static event LimbSelectEvent OnSelectLimb;
+
     const string EMISSION_COLOR = "_EmissionColor";
 
     bool mouseOver = false;
@@ -13,25 +19,54 @@ public class PositionSelector : MonoBehaviour
     [SerializeField]
     Color highlightColor;
 
-    MeshRenderer mr;
+    [SerializeField]
+    Color disabledColor;
 
-    private void Start()
+    MeshRenderer mr;
+    FixedJoint joint;
+
+
+    public void Configure(Rigidbody anchorBody, Vector3 anchorWorldPosition)
     {
+        joint.connectedBody = anchorBody;
+        joint.connectedAnchor = anchorBody.transform.InverseTransformPoint(anchorWorldPosition);                 
+    }
+
+    private void Awake()
+    {
+        joint = GetComponent<FixedJoint>();        
+        joint.autoConfigureConnectedAnchor = false;
+        joint.enableCollision = false;
         mr = GetComponent<MeshRenderer>();
         defaultColor = mr.material.GetColor(EMISSION_COLOR);
     }
+
     private void OnMouseEnter()
     {
         mouseOver = true;
-        mr.material.SetColor(EMISSION_COLOR, highlightColor);
-        Debug.Log(name);
+        if (!disabled) { 
+            mr.material.SetColor(EMISSION_COLOR, highlightColor);
+        }
     }
 
     private void OnMouseExit()
     {
         mouseOver = false;
-        mr.material.SetColor(EMISSION_COLOR, defaultColor);
+        if (!disabled)
+        {
+            mr.material.SetColor(EMISSION_COLOR, defaultColor);
+        }        
     }
 
-
+    private void Update()
+    {
+        if (disabled)
+        {
+            mr.material.SetColor(EMISSION_COLOR, disabledColor);            
+        } else if (Input.GetMouseButtonDown(0) && mouseOver)
+        {
+            disabled = true;
+            OnSelectLimb?.Invoke(this);
+        }
+    }
 }

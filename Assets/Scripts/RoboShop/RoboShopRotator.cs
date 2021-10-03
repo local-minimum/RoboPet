@@ -7,12 +7,6 @@ public class RoboShopRotator : MonoBehaviour
 {
     [SerializeField]
     Button RotateButton;
-    [SerializeField]
-    Transform CanvasTransform;
-    [SerializeField]
-    float canvasY = 0.1f;
-    [SerializeField]
-    float canvasZOffset = 0.8f;
 
     Transform body;
     
@@ -29,21 +23,28 @@ public class RoboShopRotator : MonoBehaviour
     private void OnEnable()
     {
         BodySelector.OnSelectBodyType += BodySelector_OnSelectBodyType;
+        PositionSelector.OnSelectLimb += PositionSelector_OnSelectLimb;
     }
 
     private void OnDisable()
     {
         BodySelector.OnSelectBodyType -= BodySelector_OnSelectBodyType;
+        PositionSelector.OnSelectLimb -= PositionSelector_OnSelectLimb;
+    }
+    private void PositionSelector_OnSelectLimb(PositionSelector positionSelector)
+    {
+        RotateButton.gameObject.SetActive(false);
     }
 
     private void BodySelector_OnSelectBodyType(string bodyType, Transform bodyTransform)
     {
-        var pos = bodyTransform.position;
-        pos.y = canvasY;
-        pos.z += canvasZOffset;
-        CanvasTransform.position = pos;
-        RotateButton.gameObject.SetActive(true);
+        Enabled();
         body = bodyTransform;
+    }
+
+    public void Enabled()
+    {
+        RotateButton.gameObject.SetActive(true);
     }
 
     public void Rotate()
