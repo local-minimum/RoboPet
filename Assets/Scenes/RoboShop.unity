@@ -1391,7 +1391,7 @@ GameObject:
   - component: {fileID: 867133878}
   - component: {fileID: 867133877}
   m_Layer: 5
-  m_Name: BtnPaddle
+  m_Name: BtnDog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1474,7 +1474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decription: Robolitious
-  limb: Sphere
+  limb: Dog
   startStock: 1
 --- !u!114 &867133879
 MonoBehaviour:
@@ -2621,7 +2621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decription: Mjautastic
-  limb: Sphere
+  limb: Cat
   startStock: 1
 --- !u!114 &1158970462
 MonoBehaviour:
@@ -3160,7 +3160,7 @@ GameObject:
   - component: {fileID: 1315511299}
   - component: {fileID: 1315511298}
   m_Layer: 5
-  m_Name: BtnFly
+  m_Name: BtnUnicorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3243,7 +3243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decription: Fly
-  limb: Sphere
+  limb: Unicorn
   startStock: 1
 --- !u!114 &1315511300
 MonoBehaviour:
