@@ -9,12 +9,18 @@ public class InventoryOption : MonoBehaviour
     Button btn;
     public string decription;
     public string limb;
-    
+    public int startStock;
+    int stock;
+    TMPro.TextMeshProUGUI stockText;
 
     private void Awake()
     {
-        bodyPartSelector = GetComponentInParent<BodyPartSelector>();
-        btn = GetComponent<Button>();        
+        stock = startStock;
+        bodyPartSelector = GetComponentInParent<BodyPartSelector>();        
+        btn = GetComponent<Button>();
+        btn.interactable = stock > 0;
+        stockText = GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        if (stockText != null) stockText.text = stock.ToString();
     }
 
     public void ShowDescription() {
@@ -28,7 +34,12 @@ public class InventoryOption : MonoBehaviour
 
     public void Click()
     {
-        btn.interactable = false;
+        stock -= 1;
+        if (stockText != null)
+        {
+            stockText.text = stock.ToString();
+        }
+        btn.interactable = stock > 0;
         bodyPartSelector.SetDescription("");
         bodyPartSelector.SetLimb(limb);
     }
