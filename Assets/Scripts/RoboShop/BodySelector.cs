@@ -90,14 +90,17 @@ public class BodySelector : MonoBehaviour
         description.text = "";
         leftButton.gameObject.SetActive(false);
         rightButton.gameObject.SetActive(false);
-        selectButton.gameObject.SetActive(false);
+        selectButton.gameObject.SetActive(false);                
         var option = options[index];
         float t0 = Time.timeSinceLevelLoad;
         float progress = 0f;
         var origin = cam.transform.position;
+        var startRotation = cam.transform.rotation;
+        var targetRotation = option.ViewPosition.rotation;
         while (progress < 1f && index == currentIndex && enabled)
         {
             cam.transform.position = Vector3.Lerp(origin, option.ViewPosition.position, transitionEasing.Evaluate(progress));
+            cam.transform.rotation = Quaternion.Slerp(startRotation, targetRotation, transitionEasing.Evaluate(progress));
             yield return new WaitForSeconds(0.02f);
             progress = (Time.timeSinceLevelLoad - t0) / transitionTime;
         }
