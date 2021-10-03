@@ -21,7 +21,7 @@ public abstract class LegController : MonoBehaviour
     {
         get
         {            
-            return GoodBoy.instance.HasPower && GoodBoyInput.IsActive(legPosition);
+            return GoodBoyInput.HasPower && GoodBoyInput.IsActive(legPosition);
         }
     }
 

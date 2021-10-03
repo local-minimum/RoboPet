@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SurvalianceCameraActivation : MonoBehaviour
 {
+    [SerializeField]
     SurvalianceCamera survalianceCamera;
     Collider trigger;
 
     private void Start()
-    {
-        survalianceCamera = transform.parent.GetComponentInChildren<SurvalianceCamera>();
+    {        
         trigger = GetComponent<Collider>();
     }
 

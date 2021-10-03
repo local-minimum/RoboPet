@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafe7014ee6ef8b4eb4e911d30baaef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  survalianceCamera: {fileID: 5249271395031106414}
 --- !u!1 &5249271394907474124
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5249271394921072466}
   m_Layer: 0
-  m_Name: SurvalianceCamera (2)
+  m_Name: SurvalianceCameraWithActivationWithoutActivation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

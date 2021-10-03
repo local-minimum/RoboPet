@@ -19,13 +19,13 @@ public class GoodBoyHeadAnchor : GoodBoyAnchor
     public override string SettingKey => HEAD_TYPE_SETTING;
     public override BodyPart BodyPart => BodyPart.Head;
 
-    public GoodBoyHead SpawnHead(Rigidbody body)
+    public GoodBoyHead SpawnHead()
     {
         var head = InstantiateHead();
         head.gameObject.SetActive(false);
         head.transform.position = transform.position + head.transform.TransformPoint(head.AnchorOffset);
         head.transform.SetParent(transform.parent.parent, true);
-        head.GetComponent<FixedJoint>().connectedBody = body;        
+        head.GetComponent<FixedJoint>().connectedBody = transform.parent.GetComponent<Rigidbody>();        
         head.gameObject.SetActive(true);
         return head;
     }

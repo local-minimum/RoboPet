@@ -58,6 +58,7 @@ public class RoboShopRotator : MonoBehaviour
     IEnumerator<WaitForSeconds> RunRotation()
     {
         rotating = true;
+        PositionSelector.disabled = true;
         var t0 = Time.timeSinceLevelLoad;
         var progress = 0f;
         var origin = body.rotation;
@@ -71,5 +72,6 @@ public class RoboShopRotator : MonoBehaviour
         }
         body.rotation = Quaternion.Slerp(origin, rotation, 1f);
         rotating = false;
+        PositionSelector.disabled = false;
     }
 }

@@ -35,8 +35,10 @@ public class InputSettings
     }
 }
 
-public class GoodBoyInput: MonoBehaviour
+public class GoodBoyInput
 {
+    public static bool HasPower;
+
     static Dictionary<LegPosition, InputSettings> defaltsKeys = new Dictionary<LegPosition, InputSettings>() {
         { LegPosition.ForwardLeft, new InputSettings(LegPosition.ForwardLeft, "A") },
         { LegPosition.ForwardRight, new InputSettings(LegPosition.ForwardRight, "J") },

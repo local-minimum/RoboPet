@@ -8,9 +8,6 @@ public class GoodBoy : MonoBehaviour
     Transform _trackingPosition;
 
     [SerializeField]
-    private Rigidbody body;
-
-    [SerializeField]
     GoodBoyLegAnchor[] legAnchors;
     [SerializeField]
     GoodBoyHeadAnchor headAnchor;
@@ -50,13 +47,13 @@ public class GoodBoy : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        HasPower = true;
+        GoodBoyInput.HasPower = true;
         for (int i=0, l=legAnchors.Length; i<l; i++)
         {
             legAnchors[i].SpawnLeg();
         }
 
-        var head = headAnchor.SpawnHead(body);        
+        var head = headAnchor.SpawnHead();        
         _trackingPosition = head.transform;                    
     }
 
@@ -65,10 +62,9 @@ public class GoodBoy : MonoBehaviour
         if (instance == this) instance = null;
     }
 
-    public bool HasPower { get; private set; }
 
     public void PowerDown()
     {
-        HasPower = false;
+        GoodBoyInput.HasPower = true;
     }
 }

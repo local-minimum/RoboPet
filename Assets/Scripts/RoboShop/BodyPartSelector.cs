@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BodyPartSelector : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class BodyPartSelector : MonoBehaviour
     GameObject HeadsInventory;
     [SerializeField]
     RoboShopRotator rotator;
+    [SerializeField]
+    GameObject DeployButton;
 
     bool active = false;
 
@@ -22,8 +25,10 @@ public class BodyPartSelector : MonoBehaviour
 
     private void Awake()
     {
+        GoodBoyInput.HasPower = false;
         LegsInventory.SetActive(false);
-        
+        HeadsInventory.SetActive(false);
+        DeployButton.SetActive(false);
     }
 
     public void SetDescription(string description)
@@ -42,8 +47,31 @@ public class BodyPartSelector : MonoBehaviour
         if (anchor.BodyPart == BodyPart.Leg)
         {
             LegsInventory.SetActive(false);
+            var leg = ((GoodBoyLegAnchor)anchor).SpawnLeg();
+            leg.GetComponent<Rigidbody>().useGravity = false;
+            var joint = leg.GetComponent<Joint>();
+            joint.connectedMassScale = 0;
+
+        } else if (anchor.BodyPart == BodyPart.Head)
+        {
+            HeadsInventory.SetActive(false);
+            var head = ((GoodBoyHeadAnchor)anchor).SpawnHead();
+            head.GetComponent<Rigidbody>().useGravity = false;
+            var joint = head.GetComponent<Joint>();
+            joint.connectedMassScale = 0;
         }
-        rotator.Enabled();
+        if (anchors.Count > 0)
+        {
+            rotator.Enabled();
+        } else
+        {
+            DeployButton.SetActive(true);
+        }
+    }
+
+    public void DeployRobot()
+    {
+        SceneManager.LoadScene("FirstLevel");
     }
 
     private void OnEnable()
@@ -67,6 +95,9 @@ public class BodyPartSelector : MonoBehaviour
         if (anchor.BodyPart == BodyPart.Leg)
         {
             LegsInventory.SetActive(true);
+        } else if (anchor.BodyPart == BodyPart.Head)
+        {
+            HeadsInventory.SetActive(true);
         }
     }
 
