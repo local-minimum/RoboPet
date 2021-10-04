@@ -431,7 +431,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4286447578
-  m_fontColor: {r: 0.854902, g: 1, b: 0.4901961, a: 1}
+  m_fontColor: {r: 0.54901963, g: 0.5254902, b: 0.6666667, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -756,7 +756,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4286447578
-  m_fontColor: {r: 0.854902, g: 1, b: 0.4901961, a: 1}
+  m_fontColor: {r: 0.54901963, g: 0.5254902, b: 0.6666667, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1380,7 +1380,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4286447578
-  m_fontColor: {r: 0.854902, g: 1, b: 0.4901961, a: 1}
+  m_fontColor: {r: 0.54901963, g: 0.5254902, b: 0.6666667, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1544,7 +1544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a507f5448f92fa488af0e17b1d21101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decription: Robolitious
+  decription: Foxy Plushy
   limb: Dog
   startStock: 1
 --- !u!114 &867133879
@@ -1622,7 +1622,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 41dafecf0549be448a2699c2b1ff7ea4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc6fcd748ff05fc4f8dabef8a4e0a2ba, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1738,7 +1738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a507f5448f92fa488af0e17b1d21101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decription: Slick Paddle
+  decription: Paddelicious Paddle
   limb: TwoSidedMotor
   startStock: 3
 --- !u!114 &920315657
@@ -2025,7 +2025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a507f5448f92fa488af0e17b1d21101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decription: Elite Carbon Frame Wheel
+  decription: Elite Carbon Wheely
   limb: WheelMotor
   startStock: 1
 --- !u!114 &949438717
@@ -2188,7 +2188,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4286447578
-  m_fontColor: {r: 0.854902, g: 1, b: 0.4901961, a: 1}
+  m_fontColor: {r: 0.54901963, g: 0.5254902, b: 0.6666667, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2620,7 +2620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a507f5448f92fa488af0e17b1d21101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decription: Mjautastic
+  decription: Mjautastic Pillow
   limb: Cat
   startStock: 1
 --- !u!114 &1158970462
@@ -2814,7 +2814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a507f5448f92fa488af0e17b1d21101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decription: Ultimate Piston
+  decription: Noname Budget Piston
   limb: PogoMotor
   startStock: 3
 --- !u!114 &1159398901
@@ -3243,7 +3243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decription: Fly
-  limb: Unicorn
+  limb: Unicorn Wallmount
   startStock: 1
 --- !u!114 &1315511300
 MonoBehaviour:
@@ -3320,7 +3320,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 678a782ea0d41d74897f4712be48a35d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c300261f655f87d4e934a82e7452466f, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3497,15 +3497,15 @@ MonoBehaviour:
   selectButton: {fileID: 1308603511}
   options:
   - BodyType: Boaty
-    Description: Hello Sailor
+    Description: Hello Skipper MegaShip
     ViewPosition: {fileID: 58485173}
     Body: {fileID: 569888479}
   - BodyType: Housy
-    Description: A Warm Hearth
+    Description: Fancy Castle Junior
     ViewPosition: {fileID: 1331241126}
     Body: {fileID: 116256324}
   - BodyType: Booty
-    Description: Walking Boot
+    Description: BigBooty Ultra
     ViewPosition: {fileID: 1831217136}
     Body: {fileID: 1793138793}
   currentIndex: 0
@@ -4108,7 +4108,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4286447578
-  m_fontColor: {r: 0.854902, g: 1, b: 0.4901961, a: 1}
+  m_fontColor: {r: 0.54901963, g: 0.5254902, b: 0.6666667, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4665,7 +4665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a507f5448f92fa488af0e17b1d21101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decription: Flexible forward walking leg
+  decription: NewLimb Flexmaster 2000
   limb: LegMotor
   startStock: 4
 --- !u!114 &1866337712

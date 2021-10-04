@@ -675,7 +675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab86089f686b0244ba17666b60164001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forcedStage: 5
+  forcedStage: -1
   intermissions:
   - name: Intro
     prompts:

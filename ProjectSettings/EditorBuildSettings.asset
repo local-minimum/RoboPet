@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 0e53ddd63d6f64c40b73f2dbae00d269
+  - enabled: 1
+    path: Assets/Scenes/Intermission.unity
+    guid: 6529b9a6805b2b246bc13bc0f173f5fb
+  - enabled: 1
     path: Assets/Scenes/RoboShop.unity
     guid: 755c2082db0f3844081f8f676cbed951
   - enabled: 1
@@ -23,7 +29,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 005.unity
     guid: 00a7def4d46f9b14597fc19583307fe8
-  - enabled: 1
-    path: Assets/Scenes/Intermission.unity
-    guid: 6529b9a6805b2b246bc13bc0f173f5fb
   m_configObjects: {}
