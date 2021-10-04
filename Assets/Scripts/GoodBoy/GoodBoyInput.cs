@@ -83,4 +83,19 @@ public class GoodBoyInput
         }
     }
 
+    const string RESPAWN_KEY_SETTINGS = "GoodBoy.Respawn";
+    const string RESPAWN_KEY_DEFAULT = "R";
+    static KeyCode respawnKey = KeyCode.None;
+
+    public static bool Respawn
+    {
+        get
+        {
+            if (respawnKey == KeyCode.None)
+            {
+                respawnKey = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(RESPAWN_KEY_SETTINGS, RESPAWN_KEY_DEFAULT));
+            }
+            return Input.GetKeyDown(respawnKey);
+        }
+    }
 }

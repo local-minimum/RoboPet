@@ -63,14 +63,15 @@ public class SurvalianceCamera : MonoBehaviour
     }
 
     private void Update()
-    {
+    {       
        switch (cameraMode)
         {
             case CameraMode.Static:
                 transform.rotation = startRotation;
                 return;
-            case CameraMode.Tracking:                
-                transform.rotation = Quaternion.LookRotation(GoodBoy.instance.trackingPosition.position - transform.position);
+            case CameraMode.Tracking:
+                if (GoodBoy.instance != null)
+                    transform.rotation = Quaternion.LookRotation(GoodBoy.instance.trackingPosition.position - transform.position);
                 return;
             case CameraMode.Sweaping:
                 var t = Time.timeSinceLevelLoad % (2 * sweapDuration);

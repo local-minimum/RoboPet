@@ -25,6 +25,8 @@ public class GoodBoySpawner : MonoBehaviour
 
     public static GoodBoySpawner instance { get; private set; }
 
+    public CheckPoint CheckPoint { get; set; }
+
     private void Awake()
     {
         if (instance == null)
@@ -70,22 +72,67 @@ public class GoodBoySpawner : MonoBehaviour
     {
         if (GoodBoyInput.Realign && goodBoy != null)
         {
+            StartCoroutine(Realign());
+        } else if (GoodBoyInput.Respawn && goodBoy != null)
+        {
             StartCoroutine(Respawn());
         }
+    }
+    [SerializeField]
+    List<CheckPoint> checkPoints = new List<CheckPoint>();
+
+    Vector3 LookTarget
+    {
+        get
+        {
+            var chpts = checkPoints.Count;
+            var idx = chpts == 0 ? -1 : checkPoints.IndexOf(CheckPoint);
+            if (CheckPoint == null && chpts == 0 || idx == chpts - 1)
+            {
+                return Objective.instance.transform.position;
+            }
+            return checkPoints[idx + 1].LookTarget;
+        }
+    }
+
+    Vector3 SpawnerLocation
+    {
+        get
+        {
+            if (CheckPoint == null) return transform.position;
+            return CheckPoint.transform.position;
+        }
+    }
+
+    Quaternion GetLookRotation(Vector3 spawnPosition)
+    {
+        var lookForward = LookTarget - spawnPosition;
+        lookForward.y = 0;
+        return Quaternion.LookRotation(lookForward.normalized, Vector3.up);
+    }
+
+    IEnumerator<WaitForSeconds> Realign()
+    {
+        GoodBoyInput.HasPower = false;
+        var spawnPosition = GetGround(goodBoy.Center) + spawnOffset;
+        var rotation = GetLookRotation(spawnPosition);
+        Destroy(goodBoy.gameObject);
+
+        yield return new WaitForSeconds(0.5f);
+
+        goodBoy = InstantiateBody(spawnPosition, rotation);
+        goodBoy.gameObject.name = "GoodBoy";
+        GoodBoyInput.HasPower = true;
     }
 
     IEnumerator<WaitForSeconds> Respawn()
     {
         GoodBoyInput.HasPower = false;
-        var center = goodBoy.Center + spawnOffset;
         Destroy(goodBoy.gameObject);
-        var lookForward = Objective.instance.transform.position - center;
-        lookForward.y = 0;
-        var rotation = Quaternion.LookRotation(lookForward.normalized, Vector3.up);
-
+        var spawnPosition = SpawnerLocation;        
         yield return new WaitForSeconds(0.5f);
 
-        goodBoy = InstantiateBody(center, rotation);
+        goodBoy = InstantiateBody(spawnPosition, GetLookRotation(spawnPosition));
         goodBoy.gameObject.name = "GoodBoy";
         GoodBoyInput.HasPower = true;
     }
