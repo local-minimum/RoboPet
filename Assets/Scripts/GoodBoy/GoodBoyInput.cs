@@ -66,4 +66,21 @@ public class GoodBoyInput
             return Input.GetKey(reverseKey);
         }
     }
+
+    const string REALIGN_KEY_SETTINGS = "GoodBoy.Realign";
+    const string REALIGN_KEY_DEFAULT = "Return";
+    static KeyCode realignKey = KeyCode.None;
+
+    public static bool Realign
+    {
+        get
+        {
+            if (realignKey == KeyCode.None)
+            {
+                realignKey = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(REALIGN_KEY_SETTINGS, REALIGN_KEY_DEFAULT));
+            }
+            return Input.GetKeyDown(realignKey);
+        }
+    }
+
 }

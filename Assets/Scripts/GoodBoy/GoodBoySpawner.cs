@@ -6,8 +6,10 @@ public class GoodBoySpawner : MonoBehaviour
 {
     static string DEFAULT_BODY_TYPE = "Blocky";
     public static string BODY_TYPE_SETTING = "Body.Type";
-    
-    private GoodBoy InstantiateBody()
+
+    GoodBoy goodBoy;
+
+    private GoodBoy InstantiateBody(Vector3 position, Quaternion rotation)
     {
         return Instantiate(
             Resources.Load<GoodBoy>(
@@ -16,8 +18,8 @@ public class GoodBoySpawner : MonoBehaviour
                     PlayerPrefs.GetString(BODY_TYPE_SETTING, DEFAULT_BODY_TYPE)
                 )            
             ),
-            transform.position,
-            Quaternion.identity
+            position,
+            rotation
         );
     }
 
@@ -34,10 +36,13 @@ public class GoodBoySpawner : MonoBehaviour
         }
     }
 
+    Vector3 spawnOffset;
+
     private void Start()
     {
-        var goodboy = InstantiateBody();                
-        goodboy.gameObject.name = "GoodBoy";
+        goodBoy = InstantiateBody(transform.position, transform.rotation);                
+        goodBoy.gameObject.name = "GoodBoy";
+        spawnOffset = transform.position - GetGround(transform.position);
     }
 
     private void OnDestroy()
@@ -47,4 +52,42 @@ public class GoodBoySpawner : MonoBehaviour
             instance = null;
         }
     }
+
+    
+    Vector3 GetGround(Vector3 point)
+    {
+        LayerMask mask = LayerMask.NameToLayer("Ground");
+        RaycastHit hitInfo;
+        if (Physics.Raycast(new Ray(point, Vector3.down), out hitInfo, 10, mask))
+        {
+            return hitInfo.point;
+
+        }
+        return new Ray(point, Vector3.down).GetPoint(1);
+    }
+
+    private void Update()
+    {
+        if (GoodBoyInput.Realign && goodBoy != null)
+        {
+            StartCoroutine(Respawn());
+        }
+    }
+
+    IEnumerator<WaitForSeconds> Respawn()
+    {
+        GoodBoyInput.HasPower = false;
+        var center = goodBoy.Center + spawnOffset;
+        Destroy(goodBoy.gameObject);
+        var lookForward = Objective.instance.transform.position - center;
+        lookForward.y = 0;
+        var rotation = Quaternion.LookRotation(lookForward.normalized, Vector3.up);
+
+        yield return new WaitForSeconds(0.5f);
+
+        goodBoy = InstantiateBody(center, rotation);
+        goodBoy.gameObject.name = "GoodBoy";
+        GoodBoyInput.HasPower = true;
+    }
+
 }

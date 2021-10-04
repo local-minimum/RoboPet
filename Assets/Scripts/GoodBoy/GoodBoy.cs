@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GoodBoy : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GoodBoy : MonoBehaviour
     [SerializeField]
     GoodBoyHeadAnchor headAnchor;
 
+    
     public Transform trackingPosition
     {
         get
@@ -20,12 +22,24 @@ public class GoodBoy : MonoBehaviour
         }
     }
 
+    public Vector3 Center
+    {
+        get
+        {
+            return legAnchors
+                .Select(l => l.transform.position)
+                .Aggregate(Vector3.zero, (acc, v) => acc + v) / legAnchors.Length;
+        }
+    }
+
     public static GoodBoy instance { get; private set; }
 
+    const int NO_GOODBOY_DISTANCE = 999;
     public static float distanceToObjective
     {
         get
         {
+            if (instance == null) return NO_GOODBOY_DISTANCE;
             var offset = Objective.instance.transform.position - instance.trackingPosition.position;
             return offset.magnitude;
         }
@@ -34,6 +48,7 @@ public class GoodBoy : MonoBehaviour
 
     public static float GetSqDistanceTo(Transform other)
     {
+        if (instance == null) return NO_GOODBOY_DISTANCE;
         return (other.position - instance.trackingPosition.position).sqrMagnitude;
     }
 
