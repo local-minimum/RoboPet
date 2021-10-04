@@ -675,7 +675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab86089f686b0244ba17666b60164001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forcedStage: 4
+  forcedStage: 5
   intermissions:
   - name: Intro
     prompts:
@@ -731,6 +731,16 @@ MonoBehaviour:
     - Shaken out of their introspective loop, the AI noticed that the PING was emmanating
       from a very cute looking cafe...
     nextScene: Level 005
+  - name: Friendship
+    prompts:
+    - 'It had been very embarrasing to explain everything to CoffeePot 4000. '
+    - 'CoffePot had laughed so hard that hot water vapor had leaked out of its pipes
+      even though no cappucino was being prepared. '
+    - Instead of walking away a second time, they PINGed CoffePot.| | That seemed
+      to stop the laughing.
+    - And got a PING back.| | A PING Back!| | Perhaps...| | Could this be a friend?
+    - THE END
+    nextScene: Menu
   textField: {fileID: 332638272}
 --- !u!1 &1310020539
 GameObject:
