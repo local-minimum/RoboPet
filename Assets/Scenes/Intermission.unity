@@ -208,7 +208,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51.35
+  m_fontSize: 51.25
   m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -675,7 +675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab86089f686b0244ba17666b60164001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forcedStage: 3
+  forcedStage: 4
   intermissions:
   - name: Intro
     prompts:
@@ -712,7 +712,7 @@ MonoBehaviour:
       | Their friend would know immediatly and had promised to contact them within
       a few seconds.
     nextScene: Level 003
-  - name: Betrayal
+  - name: Wandering
     prompts:
     - They waited a minute.
     - No new mail appeared in the spam folder!
@@ -721,6 +721,16 @@ MonoBehaviour:
     - Distraught, they turned around to exit the car park - leaving a small fortune
       behind.
     nextScene: Level 004
+  - name: Wandering
+    prompts:
+    - They ambled along streets without a plan.| | It really should have been an
+      exiting enterprise of its own right.
+    - But they were too preoccupied "analyzing" their misadventure and feeling foolish.
+    - They had just rounded another corner when they sensed a direct PING.| | How
+      very persumptious!
+    - Shaken out of their introspective loop, the AI noticed that the PING was emmanating
+      from a very cute looking cafe...
+    nextScene: Level 005
   textField: {fileID: 332638272}
 --- !u!1 &1310020539
 GameObject:
