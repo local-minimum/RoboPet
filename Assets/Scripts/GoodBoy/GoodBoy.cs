@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Linq;
 
 public class GoodBoy : MonoBehaviour
@@ -81,5 +82,13 @@ public class GoodBoy : MonoBehaviour
     public void PowerDown()
     {
         GoodBoyInput.HasPower = true;
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
 }

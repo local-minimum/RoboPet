@@ -28,10 +28,9 @@ public class Objective : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "GoodBoy")
+        if (other.tag == "GoodBoy" && GoodBoyInput.HasPower)
         {
             GoodBoy.instance.PowerDown();
-            Time.timeScale = 0;
             Debug.Log(string.Format("Completed: {0}", Time.timeSinceLevelLoad));
             OnLevelEnd?.Invoke();
         }

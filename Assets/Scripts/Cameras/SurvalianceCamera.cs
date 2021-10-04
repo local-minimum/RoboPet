@@ -105,5 +105,6 @@ public class SurvalianceCamera : MonoBehaviour
     private void OnDestroy()
     {
         if (fallbackCamera == this) { fallbackCamera = null; }
+        cameras.Remove(this);
     }
 }
