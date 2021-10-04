@@ -1081,6 +1081,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5249271395031106414, guid: 018ef66c2c7058e4c985584b229077df, type: 3}
+      propertyPath: cameraName
+      value: Side Street
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 018ef66c2c7058e4c985584b229077df, type: 3}
 --- !u!4 &1095416929 stripped
@@ -1235,6 +1239,10 @@ PrefabInstance:
     - target: {fileID: 5249271395031106414, guid: 018ef66c2c7058e4c985584b229077df, type: 3}
       propertyPath: cameraMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249271395031106414, guid: 018ef66c2c7058e4c985584b229077df, type: 3}
+      propertyPath: cameraName
+      value: Main Corner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 018ef66c2c7058e4c985584b229077df, type: 3}
@@ -1406,6 +1414,10 @@ PrefabInstance:
     - target: {fileID: 8109918728461664687, guid: 35e7f7507899925459ef508d2c3bc06e, type: 3}
       propertyPath: sweapDuration
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8109918728461664687, guid: 35e7f7507899925459ef508d2c3bc06e, type: 3}
+      propertyPath: cameraName
+      value: Bank Building
       objectReference: {fileID: 0}
     - target: {fileID: 8109918729178497036, guid: 35e7f7507899925459ef508d2c3bc06e, type: 3}
       propertyPath: m_Name
@@ -1587,6 +1599,10 @@ PrefabInstance:
     - target: {fileID: 5249271395031106414, guid: 018ef66c2c7058e4c985584b229077df, type: 3}
       propertyPath: cameraMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249271395031106414, guid: 018ef66c2c7058e4c985584b229077df, type: 3}
+      propertyPath: cameraName
+      value: Bank Front
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 018ef66c2c7058e4c985584b229077df, type: 3}

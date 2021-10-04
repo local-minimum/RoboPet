@@ -607,6 +607,10 @@ PrefabInstance:
       propertyPath: cameraMode
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8109918728461664687, guid: 35e7f7507899925459ef508d2c3bc06e, type: 3}
+      propertyPath: cameraName
+      value: Cafe
+      objectReference: {fileID: 0}
     - target: {fileID: 8109918729178497036, guid: 35e7f7507899925459ef508d2c3bc06e, type: 3}
       propertyPath: m_Name
       value: SurvalianceCamera
