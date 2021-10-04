@@ -59,6 +59,7 @@ public class SurvalianceCamera : MonoBehaviour
             gameObject.SetActive(false);
         }
         cameras.Add(this);
+        gameObject.SetActive(false);
     }
 
     private void Update()
