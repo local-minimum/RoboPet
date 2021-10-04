@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraHUD : MonoBehaviour
 {
@@ -28,8 +29,15 @@ public class CameraHUD : MonoBehaviour
     bool levelDone = false;
     private void Objective_OnLevelEnd()
     {
+        StartCoroutine(EndLevel());
+    }
+
+    IEnumerator<WaitForSeconds> EndLevel()
+    {
         levelDone = true;
-        SetRuntimeInfo(0f);
+        GoodBoyInput.HasPower = false;
+        yield return new WaitForSeconds(0.6f);
+        SceneManager.LoadScene("Intermission");
     }
 
     private void CameraDirector_OnNewCamera(SurvalianceCamera camera, bool firstCamera)

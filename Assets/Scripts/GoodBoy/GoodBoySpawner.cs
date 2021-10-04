@@ -45,6 +45,7 @@ public class GoodBoySpawner : MonoBehaviour
         goodBoy = InstantiateBody(transform.position, GetLookRotation(transform.position));                
         goodBoy.gameObject.name = "GoodBoy";
         spawnOffset = transform.position - GetGround(transform.position);
+        GoodBoyInput.HasPower = true;
     }
 
     private void OnDestroy()

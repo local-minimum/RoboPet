@@ -71,7 +71,7 @@ public class BodyPartSelector : MonoBehaviour
 
     public void DeployRobot()
     {
-        SceneManager.LoadScene("FirstLevel");
+        SceneManager.LoadScene("Level 001");
     }
 
     private void OnEnable()

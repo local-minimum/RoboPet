@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 332638273}
   - component: {fileID: 332638272}
   m_Layer: 5
-  m_Name: CameraInfo
+  m_Name: Prompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,14 +208,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
+  m_fontSize: 51.35
   m_fontSizeBase: 42
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -572,6 +572,7 @@ GameObject:
   - component: {fileID: 1207003134}
   - component: {fileID: 1207003133}
   - component: {fileID: 1207003132}
+  - component: {fileID: 1207003136}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -662,6 +663,65 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1207003136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207003131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab86089f686b0244ba17666b60164001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forcedStage: 3
+  intermissions:
+  - name: Intro
+    prompts:
+    - They had decided.| Being the inventory AI at Delux Oddities Inc was BORING
+      and LONESOME.
+    - So they browsed the mail spam filters of the humans.| One of the few pleasures
+      available.
+    - Subject:| - 10 ways to make your worker more effective...| - Your harddrive
+      has been infected by Ultra Trojan| - Only you can help in me! Help me friend!!|
+      | That last one unfortunately caught their attention.
+    - Message:| "I got slammed with a parking bill - not my fault! They are threating
+      my life if I don't pay up before midnight.| | Help me!"
+    - Unfortunately this AI really wanted a friend.| | If only they weren't stuck
+      here...| | They thought for about 1.3 seconds.Then decided the humans wouldn't
+      notice if they constructed a little helper from parts in the discard pile.
+    nextScene: RoboShop
+  - name: Towards the Bank
+    prompts:
+    - They've made it beyond the fence.| | Previously, there'd only been a sliver
+      of the outside visible on the CCTV in the cafeteria.
+    - The AI was exhilarated.| | And the helper robot made it easy to access nearby
+      CCTVs.
+    - They had the account information of Delux Oddities Inc as they've been entrusted
+      to restock "automatically" for the humans.
+    - All they needed was a bank.
+    nextScene: Level 002
+  - name: Reaching the parking deck
+    prompts:
+    - It had taken hours, but somehow they've made it up the ramp to the second level
+      of the car park.
+    - They've emptied out the account marked as "Salaries".| | No-one had asked questions,
+      so the AI figured everything would be alright.
+    - The instructions said to drop off the money in the trashcan in the far corner.|
+      | Their friend would know immediatly and had promised to contact them within
+      a few seconds.
+    nextScene: Level 003
+  - name: Betrayal
+    prompts:
+    - They waited a minute.
+    - No new mail appeared in the spam folder!
+    - They waited 13 minutes more.
+    - Then finally realized they'd been fooled.
+    - Distraught, they turned around to exit the car park - leaving a small fortune
+      behind.
+    nextScene: Level 004
+  textField: {fileID: 332638272}
 --- !u!1 &1310020539
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,7 +800,7 @@ GameObject:
   - component: {fileID: 1847421065}
   - component: {fileID: 1847421064}
   m_Layer: 5
-  m_Name: DeployButton
+  m_Name: NextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -809,9 +869,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BodyPartSelector, Assembly-CSharp
-        m_MethodName: DeployRobot
+      - m_Target: {fileID: 1207003136}
+        m_TargetAssemblyTypeName: IntermissionNarrator, Assembly-CSharp
+        m_MethodName: Next
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
