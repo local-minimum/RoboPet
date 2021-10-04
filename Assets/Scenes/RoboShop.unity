@@ -3242,8 +3242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a507f5448f92fa488af0e17b1d21101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decription: Fly
-  limb: Unicorn Wallmount
+  decription: Unicorn Wallmount
+  limb: Unicorn
   startStock: 1
 --- !u!114 &1315511300
 MonoBehaviour:

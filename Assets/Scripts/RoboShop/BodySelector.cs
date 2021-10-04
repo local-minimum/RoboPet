@@ -44,6 +44,11 @@ public class BodySelector : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        StartCoroutine(FocusOn(currentIndex));
+    }
+
     private void OnDestroy()
     {
         if (instance == this) { instance = null; }
@@ -65,11 +70,6 @@ public class BodySelector : MonoBehaviour
         PlayerPrefs.SetString(GoodBoySpawner.BODY_TYPE_SETTING, bodyType);
         enabled = false;
         OnSelectBodyType?.Invoke(bodyType, options[currentIndex].Body);
-    }
-
-    private void OnEnable()
-    {
-        StartCoroutine(FocusOn(currentIndex));
     }
 
     private void OnDisable()
