@@ -42,7 +42,7 @@ public class GoodBoySpawner : MonoBehaviour
 
     private void Start()
     {
-        goodBoy = InstantiateBody(transform.position, transform.rotation);                
+        goodBoy = InstantiateBody(transform.position, GetLookRotation(transform.position));                
         goodBoy.gameObject.name = "GoodBoy";
         spawnOffset = transform.position - GetGround(transform.position);
     }

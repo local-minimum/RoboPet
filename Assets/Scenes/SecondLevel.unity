@@ -195,6 +195,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnPosition
       objectReference: {fileID: 0}
+    - target: {fileID: 6742118676433791778, guid: df63c7a24af8ee0499a3db1c56638eae, type: 3}
+      propertyPath: checkPoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6742118676433791778, guid: df63c7a24af8ee0499a3db1c56638eae, type: 3}
+      propertyPath: checkPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1047549345}
     - target: {fileID: 6742118676433791779, guid: df63c7a24af8ee0499a3db1c56638eae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25

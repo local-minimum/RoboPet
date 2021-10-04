@@ -17,7 +17,7 @@ public class SurvalianceCamera : MonoBehaviour
             var best = cameras
                 .Where(cameras => cameras.Priority > 0)
                 .OrderBy(camera => camera.Priority)
-                .LastOrDefault();
+                .FirstOrDefault();
             return best != null ? best : fallbackCamera;
         }
     }
