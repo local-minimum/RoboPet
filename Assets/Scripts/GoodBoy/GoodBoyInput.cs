@@ -40,10 +40,10 @@ public class GoodBoyInput
     public static bool HasPower;
 
     static Dictionary<LegPosition, InputSettings> defaltsKeys = new Dictionary<LegPosition, InputSettings>() {
-        { LegPosition.ForwardLeft, new InputSettings(LegPosition.ForwardLeft, "A") },
-        { LegPosition.ForwardRight, new InputSettings(LegPosition.ForwardRight, "J") },
+        { LegPosition.ForwardLeft, new InputSettings(LegPosition.ForwardLeft, "Q") },
+        { LegPosition.ForwardRight, new InputSettings(LegPosition.ForwardRight, "T") },
         { LegPosition.RearLeft, new InputSettings(LegPosition.RearLeft, "S") },
-        { LegPosition.RearRight, new InputSettings(LegPosition.RearRight, "K") },
+        { LegPosition.RearRight, new InputSettings(LegPosition.RearRight, "F") },
     };
 
     public static bool IsActive(LegPosition leg)
@@ -68,7 +68,7 @@ public class GoodBoyInput
     }
 
     const string REALIGN_KEY_SETTINGS = "GoodBoy.Realign";
-    const string REALIGN_KEY_DEFAULT = "Return";
+    const string REALIGN_KEY_DEFAULT = "W";
     static KeyCode realignKey = KeyCode.None;
 
     public static bool Realign

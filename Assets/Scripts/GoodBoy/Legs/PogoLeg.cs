@@ -5,13 +5,18 @@ using UnityEngine;
 public class PogoLeg : LegController
 {
     [SerializeField]
-    AnimationCurve positioning;
+    float force;
+
+    [SerializeField]
+    float loadedPosition = -0.4f;
 
     [SerializeField]
     float cylceLength;
 
     [SerializeField]
     Transform piston;
+
+    Rigidbody rb;
 
     public override void ConfigureJoint(Rigidbody connectedBody, Vector3 connectedPosition)
     {
@@ -25,6 +30,7 @@ public class PogoLeg : LegController
     private void Awake()
     {
         baseOffset = piston.localPosition;
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -36,20 +42,19 @@ public class PogoLeg : LegController
                 wasActive = true;
             }
             t += Time.deltaTime;
-            piston.localPosition = baseOffset * positioning.Evaluate(Mathf.Min(t, cylceLength));
-
+            piston.localPosition = baseOffset * Mathf.Lerp(1, loadedPosition, t / cylceLength); 
+            if (t > cylceLength)
+            {
+                t = 0;
+                rb.AddForce(piston.up * force);
+            }
         } else if (wasActive)
         {
-            t -= Time.deltaTime;
-            if (t < 0)
+            t = 0;            
+            piston.localPosition = Vector3.Lerp(piston.localPosition, baseOffset, Time.deltaTime / cylceLength);
+            if (Vector3.SqrMagnitude(baseOffset - piston.localPosition) < 0.001f)
             {
                 wasActive = false;
-                t = 0;
-                piston.localPosition = baseOffset;
-            } else
-            {
-                var off = piston.localPosition;
-                piston.localPosition = Vector3.Lerp(off, baseOffset, t / cylceLength);
             }
         }
     }

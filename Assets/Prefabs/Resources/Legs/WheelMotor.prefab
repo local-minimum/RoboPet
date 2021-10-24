@@ -55,6 +55,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -109,6 +110,7 @@ HingeJoint:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8438679057775005196}
   m_ConnectedBody: {fileID: 0}
+  m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
@@ -151,7 +153,7 @@ MonoBehaviour:
   legPosition: 0
   anchorOffset: {x: 0.2, y: 0, z: 0}
   canReverse: 1
-  motorTargetForce: 100
+  motorTargetForce: 200
   motorForce: 50
 --- !u!64 &3606281211386206883
 MeshCollider:
